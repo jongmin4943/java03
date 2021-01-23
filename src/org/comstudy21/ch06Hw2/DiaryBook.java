@@ -108,7 +108,7 @@ public class DiaryBook {
 		if(confirm.equals("Yes")||confirm.equals("Y")||confirm.equals("y")) {
 			diaries.remove(index-1);
 			diariesIndex--;
-			System.out.printf("%d번이 삭제되었습니다.\n",index);
+			System.out.printf(":::%d번 일기가 삭제되었습니다.:::\n",index);
 		} else return;
 	}
 
