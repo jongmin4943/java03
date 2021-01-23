@@ -62,7 +62,7 @@ public class DiaryBook implements Serializable {
 				} else {
 					System.out.println("::::::::::일기 수정하기:::::::::");
 					edit();
-					System.out.println("::::::::::::::::::::::::::::");
+					System.out.println(":::::::::::수정완료:::::::::::");
 				}
 				scan.nextLine();
 				continue;
@@ -122,7 +122,7 @@ public class DiaryBook implements Serializable {
 		int index = scan.nextInt();
 		scan.nextLine();
 		System.out.println("무엇을 수정하시겠습니까? [1]작성자  [2]제목  [3]내용");
-		System.out.println("번호 >>> ");
+		System.out.print("번호 >>> ");
 		String whichOne = scan.nextLine();
 		
 		if(whichOne.equals("작성자") ||whichOne.equals("1")) {

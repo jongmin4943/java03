@@ -34,9 +34,9 @@ public class Main {
 				bufin = new BufferedInputStream(in);
 				objin = new ObjectInputStream(bufin);
 				diary.diaries = (ArrayList<Diary>) objin.readObject();
+				System.out.println(":::::::저장된 일기 목록:::::::");
+				System.out.println("번호\t제목\t작성자");
 				for (Diary m : diary.diaries) {
-					System.out.println(":::::::저장된 일기 목록:::::::");
-					System.out.println("번호\\t제목\\t작성자");
 					System.out.println(m);
 					diary.diariesIndex++;
 				}
@@ -44,10 +44,12 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {						//오류가 난다..
-				objin.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+			if (in != null) {
+				try {						//파일이 비어있으면 오류가 난다..
+					objin.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
