@@ -1,9 +1,10 @@
 package org.comstudy21.ch06Hw2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DiaryBook {
+public class DiaryBook implements Serializable {
 	ArrayList<Diary> diaries;
 	int diariesIndex;
 	Scanner scan;
@@ -126,15 +127,15 @@ public class DiaryBook {
 		
 		if(whichOne.equals("작성자") ||whichOne.equals("1")) {
 			System.out.print("작성자 : ");
-			diaries.get(index).setName(scan.nextLine());
+			diaries.get(index - 1).setName(scan.nextLine());
 		}
 		if(whichOne.equals("제목") ||whichOne.equals("2")) {
 			System.out.print("제목 : ");
-			diaries.get(index).setTitle(scan.nextLine());
+			diaries.get(index - 1).setTitle(scan.nextLine());
 		}
 		if(whichOne.equals("내용") ||whichOne.equals("3")) {
 			System.out.print("내용 : ");
-			diaries.get(index).setBody(scan.nextLine());
+			diaries.get(index - 1).setBody(scan.nextLine());
 		}
 	}
 

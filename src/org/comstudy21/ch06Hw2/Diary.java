@@ -1,6 +1,8 @@
 package org.comstudy21.ch06Hw2;
 
-class Diary {
+import java.io.Serializable;
+
+public class Diary implements Serializable{
 	private int number;
 	private String name;
 	private String title;
