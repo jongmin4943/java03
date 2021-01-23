@@ -9,7 +9,6 @@ class Diary {
 	public int getNumber() {
 		return number;
 	}
-
 	public void setNumber(int number) {
 		this.number = number;
 	}
@@ -17,7 +16,6 @@ class Diary {
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -25,7 +23,6 @@ class Diary {
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -33,7 +30,6 @@ class Diary {
 	public String getBody() {
 		return body;
 	}
-
 	public void setBody(String body) {
 		this.body = body;
 	}

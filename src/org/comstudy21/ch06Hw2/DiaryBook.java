@@ -14,7 +14,7 @@ public class DiaryBook {
 	}
 
 	void showDoList() {
-		System.out.println("::::::::::::::::::::::::::");
+		System.out.println(":::::::::::::::::::::::::");
 		System.out.println("List 	:	일기 목록보기");
 		System.out.println("Add 	:	일기 쓰기");
 		System.out.println("Detail	: 	일기 내용보기");
@@ -22,7 +22,7 @@ public class DiaryBook {
 		System.out.println("Delete 	:	일기 삭제하기");
 		System.out.println("Help 	:	명령어 다시보기");
 		System.out.println("Exit 	:	저장 후 종료");
-		System.out.println("::::::::::::::::::::::::::");
+		System.out.println(":::::::::::::::::::::::::");
 	}
 	public void start() {
 		showDoList();
