@@ -42,7 +42,7 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-//			try {
+//			try {						//오류가 난다..
 ////				objin.close();
 //			} catch (IOException e) {
 //				e.printStackTrace();

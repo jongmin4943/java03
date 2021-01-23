@@ -126,15 +126,15 @@ public class DiaryBook {
 		
 		if(whichOne.equals("작성자") ||whichOne.equals("1")) {
 			System.out.print("작성자 : ");
-			diaries.get(index).name = scan.nextLine();
+			diaries.get(index).setName(scan.nextLine());
 		}
 		if(whichOne.equals("제목") ||whichOne.equals("2")) {
 			System.out.print("제목 : ");
-			diaries.get(index).title = scan.nextLine();
+			diaries.get(index).setTitle(scan.nextLine());
 		}
 		if(whichOne.equals("내용") ||whichOne.equals("3")) {
 			System.out.print("내용 : ");
-			diaries.get(index).body = scan.nextLine();
+			diaries.get(index).setBody(scan.nextLine());
 		}
 	}
 
@@ -148,8 +148,8 @@ public class DiaryBook {
 		int number = scan.nextInt();
 		System.out.println("::::::::::"+number+"의 내용::::::::::");
 		for(Diary a : diaries) {
-			if(a.number == number) {
-				System.out.println(a.body);
+			if(a.getNumber() == number) {
+				System.out.println(a.getBody());
 			}
 		}
 	}
@@ -161,10 +161,10 @@ public class DiaryBook {
 	private void showDetail(int index) {
 		System.out.println("번호\t제목\t작성자");
 		for(Diary a : diaries) {
-			if(a.number == index) {
+			if(a.getNumber() == index) {
 				System.out.println(a);
 				System.out.println("내용");
-				System.out.println(a.body);
+				System.out.println(a.getBody());
 			}
 		}
 	}
@@ -187,13 +187,13 @@ public class DiaryBook {
 	private Diary doAdd() {
 		Diary diary = new Diary();
 		System.out.print("작성자 : ");
-		diary.name = scan.nextLine();
+		diary.setName(scan.nextLine());
 		System.out.print("제목 : ");
-		diary.title = scan.nextLine();
+		diary.setTitle(scan.nextLine());
 		System.out.print("내용 : ");
-		diary.body = scan.nextLine();
+		diary.setBody(scan.nextLine());
 		
-		diary.number = diariesIndex;
+		diary.setNumber(diariesIndex);
 		System.out.printf("%d번 글이 생성되었습니다.\n",diariesIndex);
 		diariesIndex++;
 		
