@@ -35,7 +35,7 @@ public class Main {
 			objin = new ObjectInputStream(bufin);
 			diary.diaries =(ArrayList<Diary>)objin.readObject();
 			for(Diary m : diary.diaries){
-				System.out.println("::::::::::일기 목록:::::::::");
+				System.out.println("::::::::::일기 목록::::::::::");
 				System.out.println(m);
 				System.out.println("::::::::::::::::::::::::::");
 			}
