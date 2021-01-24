@@ -11,7 +11,7 @@ public class DiaryBook implements Serializable {
 
 	DiaryBook() {
 		diaries = new ArrayList<Diary>();
-		diariesIndex = 1;
+		diariesIndex = diaries.size()+1;
 	}
 
 	void showDoList() {
@@ -171,8 +171,13 @@ public class DiaryBook implements Serializable {
 			diaries.remove(index - 1);
 			diariesIndex--;
 			System.out.printf(":::%d번 일기가 삭제되었습니다.:::\n", index);
-		} else
+		} else {
 			return;
+		}
+		for(int i = index-1 ; i < diaries.size();i++) {
+			Diary list = diaries.get(i);
+			list.setNumber(list.getNumber()-1);
+		}		//각 넘버 땡기기
 	}
 
 	/**
@@ -209,7 +214,7 @@ public class DiaryBook implements Serializable {
 		showList();
 		System.out.print("번호 >>> ");
 		int number = scan.nextInt();
-		System.out.println("::::::::::" + number + "의 내용::::::::::");
+		System.out.println("::::::::::" + number + "번 일기의 내용::::::::::");
 		for (Diary a : diaries) {
 			if (a.getNumber() == number) {
 				System.out.println(a.getBody());
