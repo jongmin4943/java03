@@ -7,6 +7,7 @@ public class Diary implements Serializable{
 	private String name;
 	private String title;
 	private String body;
+	private String date;
 
 	public int getNumber() {
 		return number;
@@ -36,8 +37,14 @@ public class Diary implements Serializable{
 		this.body = body;
 	}
 
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	@Override
 	public String toString() {
-		return String.format("[%d]\t%s\t%s\t", number, title, name);
+		return String.format("[%d]\t%s\t%s\t%s", number, title, name, date);
 	}
 }
