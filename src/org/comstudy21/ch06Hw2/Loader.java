@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-public class Loder{
+public class Loader{
 	private int indexOfDiary = 0;
 	public int getIndexOfDiary() {
 		return indexOfDiary;
@@ -15,7 +15,7 @@ public class Loder{
 		this.indexOfDiary = indexOfDiary;
 	}
 
-	public Loder() {
+	public Loader() {
 	}
 
 	File file = new File("src/org/comstudy21/ch06Hw2/Diary.txt");

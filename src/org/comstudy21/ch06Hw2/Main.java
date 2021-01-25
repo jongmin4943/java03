@@ -7,9 +7,9 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		DiaryBook diary = new DiaryBook();
-		Loder loder = new Loder();
-		diary.diaries = loder.loading(diary.diaries,diary.diariesIndex);
-		diary.diariesIndex = loder.getIndexOfDiary();
+		Loader loader = new Loader();
+		diary.diaries = loader.loading(diary.diaries,diary.diariesIndex);
+		diary.diariesIndex = loader.getIndexOfDiary();
 		diary.scan(scan);
 		diary.start();
 		Saver saver = new Saver();
