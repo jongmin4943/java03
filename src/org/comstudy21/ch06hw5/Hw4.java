@@ -2,6 +2,7 @@ package org.comstudy21.ch06hw5;
 
 import java.util.Scanner;
 
+
 //공연은 하루에 한번
 //좌석은 S석,A석,B석으로 나뉘며 각각 10개의 좌석
 //예약 시스템 메뉴는 "예약", "조회", "취소", "끝내기" 가 있다.
@@ -63,7 +64,13 @@ class Booking {
 		if (choice.equals("1")) {
 			if (showseat(choice)) {
 				System.out.print("번호>>");
-				int whichSeat = scan.nextInt();
+				int whichSeat = 0;
+				try {
+					whichSeat = scan.nextInt();
+				} catch (Exception e) {
+					System.out.println("잘못된 명령어 입니다. 다시 시도 해주세요.");
+					return;
+				}
 				scan.nextLine();
 				if (seatsS[(whichSeat) - 1] == null || seatsS[(whichSeat) - 1].getName().equals("---")) {
 					seatsS[(whichSeat) - 1] = booking(whichSeat);
@@ -77,7 +84,13 @@ class Booking {
 		if (choice.equals("2")) {
 			if (showseat(choice)) {
 				System.out.print("번호>>");
-				int whichSeat = scan.nextInt();
+				int whichSeat = 0;
+				try {
+					whichSeat = scan.nextInt();
+				} catch (Exception e) {
+					System.out.println("잘못된 명령어 입니다. 다시 시도 해주세요.");
+					return;
+				}
 				scan.nextLine();
 				if (seatsA[(whichSeat) - 1] == null || seatsA[(whichSeat) - 1].getName().equals("---")) {
 					seatsA[(whichSeat) - 1] = booking(whichSeat);
@@ -91,7 +104,13 @@ class Booking {
 		if (choice.equals("3")) {
 			if (showseat(choice)) {
 				System.out.print("번호>>");
-				int whichSeat = scan.nextInt();
+				int whichSeat = 0;
+				try {
+					whichSeat = scan.nextInt();
+				} catch (Exception e) {
+					System.out.println("잘못된 명령어 입니다. 다시 시도 해주세요.");
+					return;
+				}
 				scan.nextLine();
 				if (seatsB[(whichSeat) - 1] == null || seatsB[(whichSeat) - 1].getName().equals("---")) {
 					seatsB[(whichSeat) - 1] = booking(whichSeat);
@@ -168,7 +187,7 @@ class Booking {
 		}
 		return result;
 	}
-
+	//오버로딩 showSSeats
 	private static int showSSeats(int count) {
 		System.out.print("S>>");
 		for (int i = 0; i < seatsS.length; i++) {
@@ -194,7 +213,7 @@ class Booking {
 		}
 		System.out.println();
 	}
-
+	//오버로딩 showASeats
 	private static int showASeats(int count) {
 		System.out.print("A>>");
 		for (int i = 0; i < seatsA.length; i++) {
@@ -221,6 +240,7 @@ class Booking {
 		System.out.println();
 	}
 
+	//오버로딩 showBSeats
 	private static int showBSeats(int count) {
 		System.out.print("B>>");
 		for (int i = 0; i < seatsB.length; i++) {
@@ -246,7 +266,9 @@ class Booking {
 		}
 		System.out.println();
 	}
-
+	/**
+	 * 좌석조회
+	 */
 	public static void retrieve() {
 		System.out.println("::::현재 좌석 상태::::");
 		showSSeats();
@@ -254,23 +276,25 @@ class Booking {
 		showBSeats();
 		System.out.println("<<<조회를 완료하였습니다.>>>");
 	}
-
+	/**
+	 * 좌석취소
+	 */
 	public static void cancle() {
 		System.out.print("좌석구분 S(1), A(2), B(3)>>");
-		String choice = scan.next();
+		String choice = scan.nextLine();
 		if (choice.equals("1")) {
 			showSSeats();
 			System.out.print("이름>>");
 			String name = scan.next();
-			for (PersonalInfo a : seatsS) {
-				if (name.equals(a.getName())) {
+			for (int i = 0; i < seatsS.length; i++) {
+				PersonalInfo a = seatsS[i];
+				if (a != null && name.equals(a.getName())) {
 					a.setName("---");
 					a = null;
 					System.out.println("취소되었습니다.");
 					break;
-				} else {
+				} else if (i == seatsS.length -1) {
 					System.out.println("이름이 존재하지 않습니다.");
-					break;
 				}
 			}
 		}
@@ -278,15 +302,15 @@ class Booking {
 			showASeats();
 			System.out.print("이름>>");
 			String name = scan.next();
-			for (PersonalInfo a : seatsA) {
-				if (name.equals(a.getName())) {
+			for (int i = 0; i < seatsB.length; i++) {
+				PersonalInfo a = seatsB[i];
+				if (a != null && name.equals(a.getName())) {
 					a.setName("---");
 					a = null;
 					System.out.println("취소되었습니다.");
 					break;
-				} else {
+				} else if (i == seatsB.length -1) {
 					System.out.println("이름이 존재하지 않습니다.");
-					break;
 				}
 			}
 		}
@@ -294,18 +318,19 @@ class Booking {
 			showBSeats();
 			System.out.print("이름>>");
 			String name = scan.next();
-			for (PersonalInfo a : seatsB) {
-				if (name.equals(a.getName())) {
+			for (int i = 0; i < seatsB.length; i++) {
+				PersonalInfo a = seatsB[i];
+				if (a != null && name.equals(a.getName())) {
 					a.setName("---");
 					a = null;
 					System.out.println("취소되었습니다.");
 					break;
-				} else {
+				} else if (i == seatsB.length -1) {
 					System.out.println("이름이 존재하지 않습니다.");
-					break;
 				}
 			}
 		}
+		scan.nextLine();
 	}
 }
 
