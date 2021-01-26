@@ -124,65 +124,68 @@ class Booking {
 	 */
 	private static boolean showseat(String choice) {
 		boolean result = true;
-		int count;
 		if (choice.equals("1")) {
-			count = 0;
-			System.out.print("S>>");
-			for (int i = 0; i < seatsS.length; i++) {
-				if (seatsS[i] == null) {
-					System.out.print("--- ");
-				} else {
-					System.out.print(seatsS[i].getName() + " ");
-					count++;
-				}
-			}
-			System.out.println();
-			if (count == 10) {
-				System.out.println("더이상 예약할수 없습니다.");
-				result = false;
-			}
+			result = checkSAvail();
 		}
 		if (choice.equals("2")) {
-			count = 0;
-			System.out.print("A>>");
-			for (int i = 0; i < seatsA.length; i++) {
-				if (seatsA[i] == null) {
-					System.out.print("--- ");
-				} else {
-					System.out.print(seatsA[i].getName() + " ");
-					count++;
-				}
-			}
-			System.out.println();
-			if (count == 10) {
-				System.out.println("더이상 예약할수 없습니다.");
-				result = false;
-			}
+			result = checkAAvail();
 		}
 		if (choice.equals("3")) {
-			count = 0;
-			System.out.print("B>>");
-			for (int i = 0; i < seatsB.length; i++) {
-				if (seatsB[i] == null) {
-					System.out.print("--- ");
-				} else {
-					System.out.print(seatsB[i].getName() + " ");
-					count++;
-				}
-			}
-			System.out.println();
-			if (count == 10) {
-				System.out.println("더이상 예약할수 없습니다.");
-				result = false;
-			}
+			result = checkBAvail();
 		}
 		return result;
 	}
 
-	public static void retrieve() {
-		System.out.println("::::현재 좌석 상태::::");
+	private static boolean checkSAvail() {
+		boolean result = true;
+		int count = 0;
+		showSSeats(count);
+		if (count == 10) {
+			System.out.println("더이상 예약할수 없습니다.");
+			result = false;
+		}
+		return result;
+	}
+
+	private static boolean checkAAvail() {
+		boolean result = true;
+		int count = 0;
+		showASeats(count);
+		if (count == 10) {
+			System.out.println("더이상 예약할수 없습니다.");
+			result = false;
+		}
+		return result;
+	}
+
+	private static boolean checkBAvail() {
+		boolean result = true;
+		int count = 0;
+		showBSeats(count);
+		if (count == 10) {
+			System.out.println("더이상 예약할수 없습니다.");
+			result = false;
+		}
+		return result;
+	}
+
+	private static int showSSeats(int count) {
 		System.out.print("S>>");
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < seatsS.length; i++) {
+			if (seatsS[i] == null) {
+				System.out.print("--- ");
+			} else {
+				System.out.print(seatsS[i].getName() + " ");
+				count++;
+			}
+		}
+		System.out.println();
+		return count;
+	}
+
+	private static void showSSeats() {
+		System.out.print("S>>");
+		for (int i = 0; i < seatsS.length; i++) {
 			if (seatsS[i] == null) {
 				System.out.print("--- ");
 			} else {
@@ -190,8 +193,25 @@ class Booking {
 			}
 		}
 		System.out.println();
+	}
+
+	private static int showASeats(int count) {
 		System.out.print("A>>");
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < seatsA.length; i++) {
+			if (seatsA[i] == null) {
+				System.out.print("--- ");
+			} else {
+				System.out.print(seatsA[i].getName() + " ");
+				count++;
+			}
+		}
+		System.out.println();
+		return count;
+	}
+
+	private static void showASeats() {
+		System.out.print("A>>");
+		for (int i = 0; i < seatsA.length; i++) {
 			if (seatsA[i] == null) {
 				System.out.print("--- ");
 			} else {
@@ -199,8 +219,25 @@ class Booking {
 			}
 		}
 		System.out.println();
+	}
+
+	private static int showBSeats(int count) {
 		System.out.print("B>>");
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < seatsB.length; i++) {
+			if (seatsB[i] == null) {
+				System.out.print("--- ");
+			} else {
+				System.out.print(seatsB[i].getName() + " ");
+				count++;
+			}
+		}
+		System.out.println();
+		return count;
+	}
+
+	private static void showBSeats() {
+		System.out.print("B>>");
+		for (int i = 0; i < seatsB.length; i++) {
 			if (seatsB[i] == null) {
 				System.out.print("--- ");
 			} else {
@@ -208,6 +245,13 @@ class Booking {
 			}
 		}
 		System.out.println();
+	}
+
+	public static void retrieve() {
+		System.out.println("::::현재 좌석 상태::::");
+		showSSeats();
+		showASeats();
+		showBSeats();
 		System.out.println("<<<조회를 완료하였습니다.>>>");
 	}
 
@@ -215,15 +259,7 @@ class Booking {
 		System.out.print("좌석구분 S(1), A(2), B(3)>>");
 		String choice = scan.next();
 		if (choice.equals("1")) {
-			System.out.print("S>>");
-			for (int i = 0; i < 10; i++) {
-				if (seatsS[i] == null) {
-					System.out.print("--- ");
-				} else {
-					System.out.print(seatsS[i].getName() + " ");
-				}
-			}
-			System.out.println();
+			showSSeats();
 			System.out.print("이름>>");
 			String name = scan.next();
 			for (PersonalInfo a : seatsS) {
@@ -239,15 +275,7 @@ class Booking {
 			}
 		}
 		if (choice.equals("2")) {
-			System.out.print("A>>");
-			for (int i = 0; i < 10; i++) {
-				if (seatsA[i] == null) {
-					System.out.print("--- ");
-				} else {
-					System.out.print(seatsA[i].getName() + " ");
-				}
-			}
-			System.out.println();
+			showASeats();
 			System.out.print("이름>>");
 			String name = scan.next();
 			for (PersonalInfo a : seatsA) {
@@ -263,15 +291,7 @@ class Booking {
 			}
 		}
 		if (choice.equals("3")) {
-			System.out.print("B>>");
-			for (int i = 0; i < 10; i++) {
-				if (seatsB[i] == null) {
-					System.out.print("--- ");
-				} else {
-					System.out.print(seatsB[i].getName() + " ");
-				}
-			}
-			System.out.println();
+			showBSeats();
 			System.out.print("이름>>");
 			String name = scan.next();
 			for (PersonalInfo a : seatsB) {
